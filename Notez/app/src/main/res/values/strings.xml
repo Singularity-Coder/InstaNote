@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="fab_add_note_content_desc">Add Note</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="grid_image_item">Grid Image Item</string>
+    <string name="notes">Notes</string>
+    <string name="max_150_characters">Max 150 characters</string>
+    <string name="desc_is_necessary">Description is necessary</string>
+    <string name="title_is_necessary">Title is necessary</string>
+    <string name="search_notes">Search Notes</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="update_note">Update Note</string>
+</resources>
