@@ -30,6 +30,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
     @Inject
     lateinit var notesAdapter: NotesAdapter
 
+    /** Non Null Context and Activity */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         nnContext = context

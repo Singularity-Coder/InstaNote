@@ -16,20 +16,16 @@ class FakeNotesRepository : NotesRepositoryInterface {
 
     override suspend fun insertNote(note: Note) {
         notes.add(note)
-        refreshLiveData()
+        notesLiveData.postValue(notes)
     }
 
     override suspend fun updateNote(note: Note) {
         notes[0] = note
-        refreshLiveData()
+        notesLiveData.postValue(notes)
     }
 
     override suspend fun deleteNote(note: Note) {
         notes.remove(note)
-        refreshLiveData()
-    }
-
-    private fun refreshLiveData() {
         notesLiveData.postValue(notes)
     }
 }
