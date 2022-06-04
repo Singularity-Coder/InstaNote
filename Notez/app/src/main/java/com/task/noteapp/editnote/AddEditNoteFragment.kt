@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -50,6 +51,12 @@ class AddEditNoteFragment : Fragment(R.layout.fragment_add_edit_note) {
         setUpUserActionListeners()
     }
 
+    override fun onResume() {
+        super.onResume()
+        nnContext.clipboard()?.text = ""
+        binding.etDescription.editText?.disableCopyPaste()
+    }
+
     private fun getNoteBundleData() {
         val bundle = arguments ?: return
         val note = bundle.getParcelableArrayList<Note>(IntentKeys.KEY_UPDATE_NOTE.value)?.firstOrNull() ?: return
@@ -70,6 +77,16 @@ class AddEditNoteFragment : Fragment(R.layout.fragment_add_edit_note) {
     }
 
     private fun setUpUserActionListeners() {
+        binding.etDescription.editText?.doOnTextChanged { text, _, _, _ ->
+            text ?: return@doOnTextChanged
+            // If first char is a new line or a space then reset text
+            if (text.startsWith(prefix = "\n", ignoreCase = true) || text.startsWith(prefix = " ", ignoreCase = true)) {
+                binding.etDescription.editText?.setText("")
+            }
+            binding.btnSaveNote.isEnabled = text.isNotBlank()
+            // TODO check if the existing text is same as new text and disable save button while updating notes.
+        }
+
         binding.ivNoteImage.setOnClickListener {
             nnActivity.showScreen(ImageSelectionFragment(), FragmentsTags.IMAGE_SELECTION.value, isAdd = true)
         }

@@ -1,7 +1,12 @@
 package com.task.noteapp.helpers
 
 import android.app.Activity
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
+import android.view.ActionMode
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -98,4 +103,17 @@ fun Activity.hideKeyboard() {
         view = View(this)
     }
     imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun Context?.clipboard(): ClipboardManager? = this?.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+
+fun EditText.disableCopyPaste() {
+    isLongClickable = false
+    setTextIsSelectable(false)
+    customSelectionActionModeCallback = object : android.view.ActionMode.Callback {
+        override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean = false
+        override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean = false
+        override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean = false
+        override fun onDestroyActionMode(p0: ActionMode?) = Unit
+    }
 }
