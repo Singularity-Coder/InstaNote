@@ -1,4 +1,4 @@
-# Notez
+# InstaNote
 A dead simple notes App!
 
 ![alt text](https://github.com/Singularity-Coder/Notez/blob/main/assets/p1.jpg)
