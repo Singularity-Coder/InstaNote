@@ -22,7 +22,6 @@ A dead simple notes App! In this App you can add text notes and add images from 
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
 - [gson](https://github.com/google/gson): A Java serialization/deserialization library to convert Java Objects into JSON and back.
 - [Material-Components](https://github.com/material-components/material-components-android): Material design components for building ripple animation, and CardView.
-- [jsoup](https://mvnrepository.com/artifact/org.jsoup/jsoup): jsoup is a Java library that simplifies working with real-world HTML and XML.
 - [Coil](https://github.com/coil-kt/coil): Image loading for Android and Compose Multiplatform.
 - [Lottie](https://github.com/airbnb/lottie-android): Render After Effects animations natively on Android and iOS, Web, and React Native.
 
